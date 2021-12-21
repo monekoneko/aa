@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>ChatRoom_Create</title>
+    <link rel="stylesheet" href="css/cr_style.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-database-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-firestore-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-functions-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-messaging-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-storage-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-analytics-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-remote-config-compat.js"></script>
+      <script defer src="/__/firebase/9.5.0/firebase-performance-compat.js"></script>
+      <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+      -->
+      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  </head>
+  <body>
+    <header>
+      <img src="images/logoicon.png" class="logo" alt="ロゴ" height="100px" width="100px">
+      <nav class="nav">
+        <ul class="menu-group">
+          <li class="menu-item"><a href="AvatarCreate.html">AVATAR</a></li>
+          <li class="menu-item"><a href="UserConfiguration.html">USER CONFIGURATION</a></li>
+          <li class="menu-item" onclick="logout()">LOGOUT</li>
+        </ul>
+      </nav>
+    </header>
+      <form action="js/simple.js" method="get" class="search_container">
+              <input type="text" name="rname" id="rname" placeholder="ChatRoom Name" required="true"><br>
+              <input type="submit" value="&#xf002" id="passmodalOpen">
+              <br>
+      </form> 
+      <img src="images/chatcreateicon.png" id="modalOpen" class="chatcreate" alt="チャット作成" height="80px" width="80px">
+      <!--新規部屋作成画面-->
+      <div id="easyModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modalClose">×</span>
+            </div>
+            <form method="post" action="js/simple.js">
+              <div class="modal-body">
+                <div class="form-group">
+                  <input type="text" class="newroom" name="newchatroom" placeholder="NewChatRoom"  required><br>
+                  <input type="password" class="form-control" name="password" id="password" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)"  required><br>
+                  <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
+                </div>
+                <input type="submit" value="作成" class="createbutton">
+              </div>
+            </form>
+          </div>
+        </div>
+        <script src="main.js"></script>
+      <!--新規部屋作成画面-->
+      <!--パスワード入力画面-->
+      <div id="PassModal" class="passmodal">
+        <div class="passmodal-content">
+          <div class="passmodal-header">
+            <span class="passmodalClose">×</span>
+            </div>
+            <div class="passmodal-body">
+              <div class="passform-group">
+                <input type="password" class="form-control" name="password" id="ppassword" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+              </div>
+              <div class="passform-group">
+                <input type="password" class="form-control" name="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)"  required><br>
+                <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
+              </div>
+              <input type="submit" value="作成" class="createbutton">
+            </div>
+          </div>
+        </div>
+        <!--<script src="main.js"></script>-->
+      <!--パスワード入力画面-->
+      
+      <script type="text/javascript" src="js/chatroom.js"></script>
+  </body>
+</html>
