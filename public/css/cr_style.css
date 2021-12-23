@@ -1,0 +1,154 @@
+@charset "utf_8";
+.open{
+  transform: translateY(20px);
+}
+.search_container{
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #999;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 500px;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 150px;
+}
+.search_container input[type="text"]{
+  border: none;
+  height: 2.0em;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  border: none;
+  background: #131e2f;
+  color: #fff;
+  position: absolute;
+  width: 3.5em;
+  height: 3.0em;
+  right:0px;
+  top: -3px;
+  outline : none;
+}
+.chatcreate{
+  position:fixed;
+  right:300px;
+  bottom:150px;
+  cursor: pointer;
+  cursor: hand;
+}
+.chatcreate:hover{
+  transition: all 0.2s;
+  transform: scale(1.1);
+}
+input#rname{
+  width: 92%;
+}
+.nav{
+  margin-left: auto;
+}
+header {
+  display: flex;
+  width: 100%;
+  height: 130px;
+  background-color: rgb(42, 37, 59);
+  align-items: center;
+}
+
+.menu-item {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  cursor: hand;
+}
+.menu-item:hover{
+  transition: all 0.2s;
+  transform: scale(1.1);
+}
+
+a{
+  color: #fff;
+  text-decoration: none;
+}
+
+/*パスワード入力画面CSS*/
+
+
+.modal,.passmodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content,.passmodal-content {
+  background-color: #ffffff;
+  margin: 20% auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+  border-radius: 10px;        /* 角丸指定 */
+}
+
+@keyframes modalopen {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+/*.modal-header h1 {
+  margin: 1rem 0;
+}
+
+.modal-header {
+  background: lightblue;
+  padding: 3px 15px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;        /* 角丸指定 
+}*/
+
+.modalClose,.passmodalClose {
+  font-size: 2rem;
+}
+
+.modalClose:hover,.passmodalClose {
+  cursor: pointer;
+}
+
+.modal-body,.passmodal-body {
+  text-align: center;
+  padding: 10px 20px;
+  color: black;
+}
+
+.createbutton{
+  display       : inline-block;
+  border: none;
+  border-radius: 10px;        /* 角丸指定 
+  font-size     : 14pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 20px 20px;   /* 余白       */
+  background    : #4da6ff;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 0.9;         /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+}
+
+.createbutton:hover{
+  opacity       : 1;           /* カーソル時透明度 */
+}

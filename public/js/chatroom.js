@@ -1,3 +1,4 @@
+
 //パスワードの目
 function pushHideButton() {
     var txtPass = document.getElementById("textPassword");
@@ -63,6 +64,19 @@ function outsideClose(e) {
   modal.style.display = 'none';
   };
 };
+
+//新しいパスワード確認
+function NewCheckPassword(newconfirm){
+  // 入力値取得
+  var input1 = newpassword.value;
+  var input2 = newconfirm.value;
+  // パスワード比較
+  if(input1 != input2){
+    newconfirm.setCustomValidity("入力値が一致しません。");
+  }else{
+    newconfirm.setCustomValidity('');
+  }
+}
 
 //パスワード確認
 function CheckPassword(confirm){

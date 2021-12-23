@@ -1,30 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="utf-8">
-<title>Firebase_version9_RealtimeDB(G'sACADEMY初学者用サンプル)</title>
-</head>
-<body>
-
-<!-- コンテンツ表示画面 -->
-
-<div>
-    <div> 名前：<input type="text" id="uname"> </div>
-    <div>
-        <textarea id="text" cols="30" rows="10"></textarea>
-        <button id="send">送信</button>
-    </div>
-    <div id="output" style="overflow: auto; height: 500px;"></div> <!--チャットが表示される-->
-</div>
-<!--/ コンテンツ表示画面 -->
-
-
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- JQuery -->
-
-<!--** 以下Firebase **-->
-<script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
     import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }    //ここで宣言した関数しか下のscriptで使えない
@@ -54,12 +27,13 @@
         }
     }
 
-    var para = getUrlParam('rname');
+    var para = getUrlParam('newchatroom');
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig); //Firebaseに接続
     const db = getDatabase(app);    //リアルタイムDBに接続
     const dbRef = ref(db,para+'/chat');  //階層を指定してデータを格納
+    //set(ref(db,para+'/pass'),123456);
         
 
     $("#send").on("click",function(){
@@ -69,6 +43,7 @@
         }
         const newPostRef = push(dbRef); //ユニークキーを生成
         set(newPostRef,msg);
+        
     });
 
     onChildAdded(dbRef,function(data){
@@ -81,42 +56,3 @@
             h += '</p>';
             $("#output").prepend(h);
     })
-
-
-
-  </script>
-  <script src="js/simple.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

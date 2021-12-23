@@ -38,35 +38,12 @@
         </ul>
       </nav>
     </header>
-      <form action="js/simple.js" method="get" class="search_container">
+      <form action="simple.html" method="get" class="search_container">
               <input type="text" name="rname" id="rname" placeholder="ChatRoom Name" required="true"><br>
               <input type="submit" value="&#xf002" id="passmodalOpen">
               <br>
       </form> 
       <img src="images/chatcreateicon.png" id="modalOpen" class="chatcreate" alt="チャット作成" height="80px" width="80px">
-      <!--新規部屋作成画面-->
-      <div id="easyModal" class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="modalClose">×</span>
-            </div>
-            <form method="post" action="js/simple.js">
-              <div class="modal-body">
-                <div class="form-group">
-                  <input type="text" class="newroom" name="newchatroom" placeholder="NewChatRoom"  required><br>
-                  <input type="password" class="form-control" name="password" id="password" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" name="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)"  required><br>
-                  <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
-                </div>
-                <input type="submit" value="作成" class="createbutton">
-              </div>
-            </form>
-          </div>
-        </div>
-        <script src="main.js"></script>
-      <!--新規部屋作成画面-->
       <!--パスワード入力画面-->
       <div id="PassModal" class="passmodal">
         <div class="passmodal-content">
@@ -75,19 +52,47 @@
             </div>
             <div class="passmodal-body">
               <div class="passform-group">
-                <input type="password" class="form-control" name="password" id="ppassword" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+                <input type="password" class="form-control" name="password" id="password" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
               </div>
               <div class="passform-group">
-                <input type="password" class="form-control" name="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)"  required><br>
+                <input type="password" class="form-control" name="confirm" id="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)" required><br>
                 <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
               </div>
-              <input type="submit" value="作成" class="createbutton">
+              <input type="submit" value="作成" onclick="CheckPassword(confirm)" class="createbutton">
             </div>
           </div>
         </div>
         <!--<script src="main.js"></script>-->
       <!--パスワード入力画面-->
+      <!--新規部屋作成画面-->
+      <div id="easyModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modalClose">×</span>
+            </div>
+            <form method="get" action="simple.html">
+              <div class="modal-body">
+                <div class="form-group">
+                  <input type="text" class="newroom" id="newroomname" name="newchatroom" placeholder="NewChatRoom"  required><br>
+                  <input type="password" class="form-control" id="newpassword" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="newconfirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)" required><br>
+                  <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
+                </div>
+                <input type="submit" value="作成" onclick="NewCheckPassword(newconfirm)" class="createbutton" id="createbutton">
+              </div>
+            </form>
+          </div>
+        </div>
+        <script src="main.js"></script>
+      <!--新規部屋作成画面-->
       
       <script type="text/javascript" src="js/chatroom.js"></script>
+      <script type="module" src="js/chatroom_DB.js"></script>
+      <!-- JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <!-- JQuery -->
+
   </body>
 </html>
