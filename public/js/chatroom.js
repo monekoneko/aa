@@ -1,22 +1,7 @@
-
-//パスワードの目
-function pushHideButton() {
-    var txtPass = document.getElementById("textPassword");
-    var btnEye = document.getElementById("buttonEye");
-    if (txtPass.type === "text") {
-      txtPass.type = "password";
-      btnEye.className = "fa fa-eye";
-    } else {
-      txtPass.type = "text";
-      btnEye.className = "fa fa-eye-slash";
-    }
-  }
-
-
 function logout() {
   firebase.auth().onAuthStateChanged( (user) => {
     firebase.auth().signOut().then(()=>{
-      console.log("ログアウトしました");
+      console.log("ログアウトしました",user);
       location.href = 'https://sample-c2b36.web.app/index.html';  //ログイン画面に戻る
     })
     .catch( (error)=>{
@@ -27,16 +12,24 @@ function logout() {
 
 //モーダルウィンドウ処理
 const buttonOpen = document.getElementById('modalOpen');
-const passbuttonOpen = document.getElementById('passmodalOpen');
+const iconOpen = document.getElementById('helloUser');
 const modal = document.getElementById('easyModal');
 const pmodal = document.getElementById('PassModal');
+const imodal = document.getElementById('iconModal');
 const buttonClose = document.getElementsByClassName('modalClose')[0];
 const pbuttonClose = document.getElementsByClassName('passmodalClose')[0];
+const cbuttonClose = document.getElementsByClassName('changemodalClose')[0];
 
 //ボタンがクリックされた時
 buttonOpen.addEventListener('click', modalOpen);
 function modalOpen() {
   modal.style.display = 'block';
+};
+
+//ボタンがクリックされた時(アイコン変更)
+iconOpen.addEventListener('click', cmodalOpen);
+function cmodalOpen() {
+  imodal.style.display = 'block';
 };
 
 //バツ印がクリックされた時
@@ -45,16 +38,16 @@ function modalClose() {
   modal.style.display = 'none';
 };
 
-//検索ボタンがクリックされた時
-passbuttonOpen.addEventListener('click', pmodalOpen);
-function pmodalOpen() {
-  pmodal.style.display = 'block';
-};
-
 //バツ印がクリックされた時(パスワード)
 pbuttonClose.addEventListener('click', pmodalClose);
 function pmodalClose() {
   pmodal.style.display = 'none';
+};
+
+//バツ印がクリックされた時(アイコン変更)
+cbuttonClose.addEventListener('click', cmodalClose);
+function cmodalClose() {
+  imodal.style.display = 'none';
 };
 
 //モーダルコンテンツ以外がクリックされた時
@@ -63,30 +56,20 @@ function outsideClose(e) {
   if (e.target == modal) {
   modal.style.display = 'none';
   };
+  if (e.target == pmodal) {
+    pmodal.style.display = 'none';
+    };
+  if (e.target == imodal) {
+    imodal.style.display = 'none';
+    };
 };
 
-//新しいパスワード確認
-function NewCheckPassword(newconfirm){
-  // 入力値取得
-  var input1 = newpassword.value;
-  var input2 = newconfirm.value;
-  // パスワード比較
-  if(input1 != input2){
-    newconfirm.setCustomValidity("入力値が一致しません。");
-  }else{
-    newconfirm.setCustomValidity('');
-  }
-}
+// 画像再設定
+function previewImage(obj) {
 
-//パスワード確認
-function CheckPassword(confirm){
-  // 入力値取得
-  var input1 = password.value;
-  var input2 = confirm.value;
-  // パスワード比較
-  if(input1 != input2){
-    confirm.setCustomValidity("入力値が一致しません。");
-  }else{
-    confirm.setCustomValidity('');
-  }
+  // blob型の画像URLを取得
+  const blobUrl = window.URL.createObjectURL(obj.files[0]);
+  const img = document.getElementById("previewIcon"); // img要素を取得
+  img.src = blobUrl; // URLをimg要素にセット
+  console.log(img.src);
 }

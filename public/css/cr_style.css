@@ -2,6 +2,10 @@
 .open{
   transform: translateY(20px);
 }
+#helloUser{
+  color: #ffffff;
+  list-style: none;
+}
 .search_container{
   box-sizing: border-box;
   position: relative;
@@ -21,7 +25,7 @@
 .search_container input[type="text"]:focus {
   outline: 0;
 }
-.search_container input[type="submit"]{
+.search_container input[type="button"]{
   cursor: pointer;
   font-family: FontAwesome;
   border: none;
@@ -34,16 +38,34 @@
   top: -3px;
   outline : none;
 }
-.chatcreate{
-  position:fixed;
+.roomcreate{
+  position: fixed;
+  bottom: 25px; 
+  right: 10px;
+  padding: 6px 40px;
+	width: 280px;
+	height: 300px;
+	margin: 0 auto;
+	display: block;
+	border-radius: 12px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.roomcreate .chatcreate{
   right:300px;
   bottom:150px;
-  cursor: pointer;
-  cursor: hand;
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 100%;
+	display: block;
+	-webkit-transition: .1s ease-in-out;
+	transition: .1s ease-in-out;
 }
-.chatcreate:hover{
-  transition: all 0.2s;
-  transform: scale(1.1);
+.roomcreate:hover .chatcreate:nth-of-type(2){
+  opacity: 0;
 }
 input#rname{
   width: 92%;
@@ -81,7 +103,7 @@ a{
 /*パスワード入力画面CSS*/
 
 
-.modal,.passmodal {
+.modal,.passmodal,.iconchangemodal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -93,7 +115,7 @@ a{
   background-color: rgba(0,0,0,0.5);
 }
 
-.modal-content,.passmodal-content {
+.modal-content,.passmodal-content,.iconchangemodal-content {
   background-color: #ffffff;
   margin: 20% auto;
   width: 50%;
@@ -108,23 +130,11 @@ a{
   to {opacity: 1}
 }
 
-/*.modal-header h1 {
-  margin: 1rem 0;
-}
-
-.modal-header {
-  background: lightblue;
-  padding: 3px 15px;
-  display: flex;
-  justify-content: space-between;
-  border-radius: 10px;        /* 角丸指定 
-}*/
-
-.modalClose,.passmodalClose {
+.modalClose,.passmodalClose,.changemodalClose {
   font-size: 2rem;
 }
 
-.modalClose:hover,.passmodalClose {
+.modalClose:hover,.passmodalClose,.changemodalClose {
   cursor: pointer;
 }
 
@@ -134,7 +144,7 @@ a{
   color: black;
 }
 
-.createbutton{
+.searchbutton,.createbutton,.changebutton{
   display       : inline-block;
   border: none;
   border-radius: 10px;        /* 角丸指定 
@@ -149,6 +159,51 @@ a{
   transition    : .3s;         /* なめらか変化 */
 }
 
-.createbutton:hover{
-  opacity       : 1;           /* カーソル時透明度 */
+.searchbutton:hover,.createbutton:hover,.changebutton:hover{
+  opacity: 1;           /* カーソル時透明度 */
+}
+
+.creator{
+  pointer-events: none;
+}
+#allchatroom{
+  border: 1px solid #b6b6b6;
+  border-collapse: collapse; 
+  table-layout: fixed;
+  word-wrap: break-word;
+  margin-left: auto;
+  margin-right: auto;
+}
+table#allchatroom td.underline {
+  height: 15%;
+  border-bottom: 1px dotted #b6b6b6;
+}
+.chat{
+  width: 40%;
+}
+
+.chat_title{
+  font-size: 18px;
+  text-align: center;
+}
+
+table td{
+  height: 15%;
+  width: 300px
+}
+
+#preview{
+  width:  50px;       /* ※縦横を同値に */
+  height: 50px;       /* ※縦横を同値に */
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+}
+
+.implementator{
+  font-size: 20px;
+}
+
+#previewIcon{
+  width:  180px;       /* ※縦横を同値に */
+  height: 180px;       /* ※縦横を同値に */
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
 }

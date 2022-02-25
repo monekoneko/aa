@@ -44,16 +44,16 @@
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="email" id="email" placeholder="email">
+                    <input type="email" id="email" placeholder="メールアドレス" autofocus>
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="lock icon"></i>
-                    <input type="password" id="password" placeholder="password">
+                    <input type="password" id="password" placeholder="パスワード">
                   </div>
                 </div>
-                <input type="button" class="ui fluid large orange submit button" id="login_btn1" onclick="login()" value="LOGIN">
+                <input type="button" class="ui fluid large orange submit button" id="login_btn" value="LOGIN">
               </div>
               <div class="ui error message"></div>
             </form>
@@ -65,19 +65,29 @@
             <form class="ui large form">
               <div class="ui segment">
                 <h2 class="ui header">Sign up for an Account</h2>
+                <img id="preview" src="./images/sampleIcon.jpg">
+                <input type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+                <div class="field">
+                  <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="text" id="username" placeholder="ユーザ名" pattern="" autofocus>
+                  </div>
+                </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
-                    <input type="email" id="newemail" placeholder="email">
+                    <input type="email" id="newemail" placeholder="メールアドレス">
                   </div>
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="lock icon"></i>
-                    <input type="password" id="newpassword" placeholder="password">
+                    <input type="password" id="newpassword" placeholder="パスワード" >
+                    <p>※パスワードは英数字6文字以上</p>
                   </div>
                 </div>
-                <input type="button" class="ui fluid large teal submit button" id="login_btn2" onclick="signup()" value="REGISTER">
+                <input type="button" class="ui fluid large teal submit button" id="signup_btn" value="REGISTER">
+              </div>
               </div>
               <div class="ui error message"></div>
               <div class="g-recaptcha" style="width: 100%" data-sitekey="6Lcd4RcTAAAAAFdohXyb7LRFrEDkSua3VlVx8IBb"></div>
@@ -88,5 +98,7 @@
       </div>
     </div>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="module" src="js/index_DB.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </body>
 </html>

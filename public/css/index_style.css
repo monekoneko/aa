@@ -277,21 +277,26 @@ body {
   padding: 20px !important;
 }
 
-#login_btn1{
+#login_btn{
     background-color: #27afa4;
     color: #ffff;
     border: none;
     font-size: 20px;
     width: 300px;
 }
-#login_btn2{
+#signup_btn{
     background-color: #d85838;
     color: #ffff;
     border: none;
     font-size: 20px;
     width: 300px;
 }
-#email,#newemail,#password,#newpassword{
+#username,#email,#newemail,#password,#newpassword{
     width: 80%;
     font-size: 15px;
+}
+#preview{
+  width:  180px;       /* ※縦横を同値に */
+  height: 180px;       /* ※縦横を同値に */
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
 }

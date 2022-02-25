@@ -88,50 +88,12 @@
  
  })();
 
-  /*function signup() {
-    let email = document.getElementById('email').value
-    let password = document.getElementById('password').value
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('ユーザー作成完了')
-        alert('ユーザー作成完了')
-      })
-      .catch((error) => {
-        console.log('ユーザー作成失敗', error);
-        alert('無効なメールアドレスです')
-      });
-  }*/
-  function signup() {
-    let email = document.getElementById('newemail').value
-    let password = document.getElementById('newpassword').value
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('ユーザー作成完了')
-        console.log(email);
-        location.href = 'https://sample-c2b36.web.app/chatroom.html';  //ホームに画面遷移
-      })
-      .catch((error) => {
-        console.log('ユーザー作成失敗', error);
-        console.log(email);
-        alert(email)
-      });
+ function previewImage(obj) {
 
-  }
-
-  function login() {
-    let email = document.getElementById('email').value
-    let password = document.getElementById('password').value
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(() => {
-        console.log('ログイン完了')
-        console.log(email);
-        location.href = 'https://sample-c2b36.web.app/chatroom.html';  //ホームに画面遷移
-      })
-      .catch((error) => {
-        console.log('ログイン失敗', error);
-        console.log(email);
-        alert(email)
-      });
-
-  }
+  // blob型の画像URLを取得
+  const blobUrl = window.URL.createObjectURL(obj.files[0]);
+  const img = document.getElementById("preview"); // img要素を取得
+  img.src = blobUrl; // URLをimg要素にセット
+  console.log(img.src);
+}
   

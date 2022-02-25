@@ -28,40 +28,49 @@
 
   </head>
   <body>
+    
     <header>
       <img src="images/logoicon.png" class="logo" alt="ロゴ" height="100px" width="100px">
+      <div id="helloUser"></div>
       <nav class="nav">
         <ul class="menu-group">
-          <li class="menu-item"><a href="AvatarCreate.html">AVATAR</a></li>
-          <li class="menu-item"><a href="UserConfiguration.html">USER CONFIGURATION</a></li>
           <li class="menu-item" onclick="logout()">LOGOUT</li>
         </ul>
       </nav>
     </header>
-      <form action="simple.html" method="get" class="search_container">
-              <input type="text" name="rname" id="rname" placeholder="ChatRoom Name" required="true"><br>
-              <input type="submit" value="&#xf002" id="passmodalOpen">
-              <br>
+      <form class="search_container" action="" onsubmit="return false;" id="search">
+        <input type="text" name="rname" id="rname" placeholder="ChatRoom Name" required="true" autofocus><br>
+        <input type="button" value="&#xf002" id="passmodalOpen">
       </form> 
-      <img src="images/chatcreateicon.png" id="modalOpen" class="chatcreate" alt="チャット作成" height="80px" width="80px">
-      <!--パスワード入力画面-->
-      <div id="PassModal" class="passmodal">
-        <div class="passmodal-content">
-          <div class="passmodal-header">
-            <span class="passmodalClose">×</span>
+        <!--現在存在するルーム表示-->
+        <p class="chat_title">現在存在するルーム一覧</p>
+        <table id="allchatroom"></table>
+        <!--現在存在するルーム表示-->
+        <div class="roomcreate">
+          <img src="images/chatcreateicon2.png" class="chatcreate" alt="チャット作成2" >
+          <img src="images/chatcreateicon1.png" id="modalOpen" class="chatcreate" alt="チャット作成1" >
+        </div>
+        <!--パスワード入力画面-->
+        <div id="PassModal" class="passmodal">
+          <div class="passmodal-content">
+            <div class="passmodal-header">
+              <span class="passmodalClose">×</span>
             </div>
-            <div class="passmodal-body">
-              <div class="passform-group">
-                <input type="password" class="form-control" name="password" id="password" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+            <form id="passcheck">
+              <div class="passmodal-body">
+                <div class="passform-group">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"  required autofocus>
+                </div>
+                <div class="passform-group">
+                  <input type="password" class="form-control" name="confirm1" id="confirm1"  placeholder="Password(Checked)" required><br>
+                  <label>パスワードを入力してください※英数字のみ使用可能</label><br>
+                </div>
+                <input type="button" value="入室" class="searchbutton" id="pass_inspection">
               </div>
-              <div class="passform-group">
-                <input type="password" class="form-control" name="confirm" id="confirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)" required><br>
-                <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
-              </div>
-              <input type="submit" value="作成" onclick="CheckPassword(confirm)" class="createbutton">
-            </div>
+            </form>
           </div>
         </div>
+
         <!--<script src="main.js"></script>-->
       <!--パスワード入力画面-->
       <!--新規部屋作成画面-->
@@ -70,29 +79,43 @@
           <div class="modal-header">
             <span class="modalClose">×</span>
             </div>
-            <form method="get" action="simple.html">
+            <form  id="newcreate">
+              <!-- method="get" action="simple.html" -->
               <div class="modal-body">
                 <div class="form-group">
-                  <input type="text" class="newroom" id="newroomname" name="newchatroom" placeholder="NewChatRoom"  required><br>
-                  <input type="password" class="form-control" id="newpassword" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password"  required>
+                  <input type="text" class="newroom" id="newroomname" name="newchatroom" placeholder="NewChatRoom" autofocus required><br>
+                  <input type="password" class="form-control" id="newpassword" placeholder="Password"  required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="newconfirm" pattern="^[0-9A-Za-z]+$" minlength="6" maxlength="6" placeholder="Password(Checked)" required><br>
-                  <label>パスワードを入力してください<br>※6文字英数字で入力</label><br>
+                  <input type="password" class="form-control" id="newconfirm" placeholder="Password(Checked)" required><br>
+                  <label>パスワードを入力してください※英数字のみ使用可能</label><br>
                 </div>
-                <input type="submit" value="作成" onclick="NewCheckPassword(newconfirm)" class="createbutton" id="createbutton">
+                <input type="button" value="作成" class="createbutton" id="createbutton">
               </div>
             </form>
           </div>
         </div>
-        <script src="main.js"></script>
       <!--新規部屋作成画面-->
-      
-      <script type="text/javascript" src="js/chatroom.js"></script>
-      <script type="module" src="js/chatroom_DB.js"></script>
+      <!--会員情報-->
+      <div id="iconModal" class="iconchangemodal">
+        <div class="iconchangemodal-content">
+          <div class="iconchangemodal-header">
+            <span class="changemodalClose">×</span>
+          </div>
+          <form id="iconchange">
+            <img id="previewIcon">
+            <input type="file" accept="image/jpeg, image/png" onchange="previewImage(this);">
+            <input type="button" value="変更" class="changebutton" id="changebutton">
+          </form>
+        </div>
+      </div>
+      <!--会員情報-->
       <!-- JQuery -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <!-- JQuery -->
+      <script type="text/javascript" src="js/chatroom.js"></script>
+      <script type="module" src="js/chatroom_DB.js"></script>
+      
 
   </body>
 </html>
